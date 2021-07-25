@@ -32,6 +32,8 @@ function* fetchAllMovies() {
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
+//-------------------------------REDUCERS
+
 // Used to store movies returned from the server
 const movies = (state = [], action) => {
     switch (action.type) {
@@ -51,6 +53,9 @@ const genres = (state = [], action) => {
             return state;
     }
 }
+
+
+//----------------------------------STORE 
 
 // Create one store that all components can use
 const storeInstance = createStore(
