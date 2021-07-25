@@ -16,6 +16,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery ('GET_MOVIE_DETAILS', getDetails);
     yield takeEvery ('ADD_MOVIE', addMovie);
+    yield takeEvery ('FETCH_GENRES', fetchAllGenres);
 }
 
 //--------GENERATOR FUNCTIONS---------
@@ -37,8 +38,8 @@ function* fetchAllGenres(){
         const genres = yield axios.get('/api/genre');
         console.log('get all:', genres.data);
         yield put ({ type: 'SET_GENRES', payload: genres.data});
-    } catch (error) {
-        console.log('fetch all genres error', error);
+    } catch  {
+        console.log('fetch all genres error');
     }
 }
 
@@ -49,7 +50,6 @@ function* getDetails(action) {
         const response = yield axios.get(`/api/movie/${action.payload}`);
         console.log('getDetails response:', response.data);
         yield put({ type: 'SET_DETAILS', payload: response.data})
-
     } catch(error) {
         console.log('unable to getDetails', error);
     }
