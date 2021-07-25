@@ -6,17 +6,23 @@ function AddMovie() {
     const dispatch = useDispatch();
     const moviesReducer = useSelector(store => store.movies);
 
-    useEffect(() => {
-        getMovies;
-    }, []);
-
     const [movieTitle, setMovietitle]= useState('');
     const [movieDescription, setMovieDescription]= useState('');
     const [moviePoster, setMoviePoster]= useState('');
     const [movieGenre, setMovieGenre]= useState('');
 
+    const handleCancel= (event) =>{
+        event.preventDefault();
+        history.push('/');
 
+    }
 
+    const handleSave= (event) => {
+        event.preventDefault();
+        console.log('successfully saved movie');
+        dispatch({type: 'ADD_MOVIE', payload:  movieTitle, moviePoster, movieDescription, movieGenre})
+
+    }
 
     const handleTitle= (event) =>{
         event.preventDefault();
@@ -38,10 +44,7 @@ function AddMovie() {
         setMovieGenre(event.target.value);
     };
     
-    // const getMovies = () => {
-    //     console.log('in get movies');
-    //     dispatch ({ type: 'FETCH_MOVIES'});
-    // };
+    
 
     return(
         <>
@@ -77,24 +80,27 @@ function AddMovie() {
             id= 'addGenre'
             type= 'text'
             value= {movieGenre}
-            onChange={handleGenre}
+            onChange= {handleGenre}
             name='Genres'>
-                <option> Adventure </option>
-                <option> Animated </option>
-                <option> Biographical </option>
-                <option> Comedy </option>
-                <option> Disaster </option>
-                <option>  Drama </option>
-                <option> Epic </option>
-                <option> Fantasy </option>
-                <option> Musical </option>
-                <option> Romantic </option>
-                <option> Science Fiction </option>
-                <option> Space-Opera </option>
-                <option>  Superhero </option>
+                <option onClick={handleGenre} value='Adventure'> Adventure </option>
+                <option onClick={handleGenre} value= 'Animated'> Animated </option>
+                <option onClick={handleGenre} value= 'Biographical'> Biographical </option>
+                <option onClick={handleGenre} value= 'Comedy'> Comedy </option>
+                <option onClick={handleGenre} value='Disaster'> Disaster </option>
+                <option onClick={handleGenre} value='Drama'>  Drama </option>
+                <option onClick={handleGenre} value= 'Epic'> Epic </option>
+                <option onClick={handleGenre} value='Fantasy'> Fantasy </option>
+                <option onClick={handleGenre} value='Musical'> Musical </option>
+                <option onClick={handleGenre} value='Romantic'> Romantic </option>
+                <option onClick={handleGenre} value='Science Fiction'> Science Fiction </option>
+                <option onClick={handleGenre} value='Space-Opera'> Space-Opera </option>
+                <option onClick={handleGenre} value= 'Superhero'>  Superhero </option>
                 
             </select>
 
+            <button type='submit' onClick={handleSave}> Save </button>
+            <button onClick={handleCancel}> Cancel </button>
+            
         </form>
 
         </>
