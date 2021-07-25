@@ -63,8 +63,8 @@ router.get('/:id', (req,res) => {
   JOIN genres on genres.id= movies_genres.genre_id
   WHERE movies.id=$1;`;
   pool.query(queryText, [detailsId])
-  .them (res => {
-    console.log('details GET response:', res);
+  .then (result => {
+    console.log('details GET response:', result);
     res.send(result.rows);
   }) .catch (err => {
     console.log('DETAILS GET RES ERROR', err);
