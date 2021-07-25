@@ -4,8 +4,7 @@ import {useHistory} from 'react-router-dom';
 
 function AddMovie() {
     const dispatch = useDispatch();
-    const moviesReducer = useSelector(store => store.movies);
-
+    const history= useHistory();
     const [movieTitle, setMovietitle]= useState('');
     const [movieDescription, setMovieDescription]= useState('');
     const [moviePoster, setMoviePoster]= useState('');
@@ -82,7 +81,8 @@ function AddMovie() {
             value= {movieGenre}
             onChange= {handleGenre}
             name='Genres'>
-                <option onClick={handleGenre} value='Adventure'> Adventure </option>
+                <option value= '' defaultValue> Choose a Genre here </option>
+                <option onClick={handleGenre} value='Adventure' > Adventure </option>
                 <option onClick={handleGenre} value= 'Animated'> Animated </option>
                 <option onClick={handleGenre} value= 'Biographical'> Biographical </option>
                 <option onClick={handleGenre} value= 'Comedy'> Comedy </option>
