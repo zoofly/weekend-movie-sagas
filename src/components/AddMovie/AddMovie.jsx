@@ -10,6 +10,12 @@ function AddMovie() {
     const [moviePoster, setMoviePoster]= useState('');
     const [movieGenre, setMovieGenre]= useState('');
 
+    const newMovie = {
+        title: movieTitle,
+        poster: moviePoster,
+        description: movieDescription,
+        genre_id: movieGenre
+    }
     const handleCancel= (event) =>{
         event.preventDefault();
         history.push('/');
@@ -19,7 +25,7 @@ function AddMovie() {
     const handleSave= (event) => {
         event.preventDefault();
         console.log('successfully saved movie');
-        dispatch({type: 'ADD_MOVIE', payload:  movieTitle, moviePoster, movieDescription, movieGenre})
+        dispatch({type: 'ADD_MOVIE', payload: newMovie})
 
     }
 
@@ -82,19 +88,19 @@ function AddMovie() {
             onChange= {handleGenre}
             name='Genres'>
                 <option value= '' defaultValue> Choose a Genre here </option>
-                <option onClick={handleGenre} value='Adventure' > Adventure </option>
-                <option onClick={handleGenre} value= 'Animated'> Animated </option>
-                <option onClick={handleGenre} value= 'Biographical'> Biographical </option>
-                <option onClick={handleGenre} value= 'Comedy'> Comedy </option>
-                <option onClick={handleGenre} value='Disaster'> Disaster </option>
-                <option onClick={handleGenre} value='Drama'>  Drama </option>
-                <option onClick={handleGenre} value= 'Epic'> Epic </option>
-                <option onClick={handleGenre} value='Fantasy'> Fantasy </option>
-                <option onClick={handleGenre} value='Musical'> Musical </option>
-                <option onClick={handleGenre} value='Romantic'> Romantic </option>
-                <option onClick={handleGenre} value='Science Fiction'> Science Fiction </option>
-                <option onClick={handleGenre} value='Space-Opera'> Space-Opera </option>
-                <option onClick={handleGenre} value= 'Superhero'>  Superhero </option>
+                <option onClick={handleGenre} value='1' > Adventure </option>
+                <option onClick={handleGenre} value= '2'> Animated </option>
+                <option onClick={handleGenre} value= '3'> Biographical </option>
+                <option onClick={handleGenre} value= '4'> Comedy </option>
+                <option onClick={handleGenre} value='5'> Disaster </option>
+                <option onClick={handleGenre} value='6'>  Drama </option>
+                <option onClick={handleGenre} value= '7'> Epic </option>
+                <option onClick={handleGenre} value='8'> Fantasy </option>
+                <option onClick={handleGenre} value='9'> Musical </option>
+                <option onClick={handleGenre} value='10'> Romantic </option>
+                <option onClick={handleGenre} value='11'> Science Fiction </option>
+                <option onClick={handleGenre} value='12'> Space-Opera </option>
+                <option onClick={handleGenre} value= '13'>  Superhero </option>
                 
             </select>
 
