@@ -37,10 +37,9 @@ function* getDetails(action) {
     //get all details about a certain movie
     try{
         console.log('in getDetails', action.payload);
-        const response = yield axios.get(`/api/genre/${action.payload}`);
+        const response = yield axios.get(`/api/movie/${action.payload}`);
         console.log('getDetails response:', response.data);
-        yield put({ type: 'SET_GENRE', payload: response.data})
-
+        yield put({ type: 'SET_DETAILS', payload: response.data})
 
     } catch(error) {
         console.log('unable to getDetails', error);

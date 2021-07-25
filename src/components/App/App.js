@@ -9,10 +9,12 @@ function App() {
   return (
     <div className="App">
       <h1>The Movies Saga!</h1>
-      <Router>        
+      <Router>    
+        <nav>  
         <Link to='/'> Home </Link>
         <br></br>
         <Link to='/addmovie'> Add a Movie </Link>
+        </nav>  
         <Route path="/" exact>
           <MovieList />
         </Route>

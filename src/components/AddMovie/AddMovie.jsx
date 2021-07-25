@@ -5,7 +5,7 @@ import {useHistory} from 'react-router-dom';
 function AddMovie() {
     const dispatch = useDispatch();
     const history= useHistory();
-    const [movieTitle, setMovietitle]= useState('');
+    const [movieTitle, setMovieTitle]= useState('');
     const [movieDescription, setMovieDescription]= useState('');
     const [moviePoster, setMoviePoster]= useState('');
     const [movieGenre, setMovieGenre]= useState('');
@@ -26,12 +26,17 @@ function AddMovie() {
         event.preventDefault();
         console.log('successfully saved movie');
         dispatch({type: 'ADD_MOVIE', payload: newMovie})
+        setMovieDescription('')
+        setMovieGenre('')
+        setMoviePoster('')
+        setMovieTitle('')
+
 
     }
 
     const handleTitle= (event) =>{
         event.preventDefault();
-        setMovietitle(event.target.value);
+        setMovieTitle(event.target.value);
     };
 
     const handleDescription= (event) =>{

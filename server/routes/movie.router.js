@@ -53,4 +53,24 @@ router.post('/', (req, res) => {
   })
 })
 
+//GET REQUEST for movie details
+router.get('/:id', (req,res) => {
+  const detailsId = req.params.id;
+  console.log('detailsId is:', detailsId);
+  const queryText= `SELECT title, description, poster, genres.name
+  from movies
+  JOIN movies_genres on movies_genres.movie_id = movies.id
+  JOIN genres on genres.id= movies_genres.genre_id
+  WHERE movies.id=$1;`;
+  pool.query(queryText, [detailsId])
+  .them (res => {
+    console.log('details GET response:', res);
+    res.send(result.rows);
+  }) .catch (err => {
+    console.log('DETAILS GET RES ERROR', err);
+    res.sendStatus(500);
+  })
+
+})
+
 module.exports = router;
