@@ -1,21 +1,28 @@
 import {useDispatch, useSelector} from 'react-redux';
+import {useHistory} from 'react-router-dom';
 
 function Details() {
 
-    const genres = useSelector(store => store.genres);
+    const details = useSelector(store => store.details);
+    const history= useHistory();
+
+    const handleBack= () => {
+        history.push('/');
+    }
 
 
     return(
         <div className='movieDetails'>
-        {genres.map((genre) => {
+        {details.map((movie) => {
             return(
-                <div key={genre.id}>
-                    <h1> {genre.title} </h1>
-                    <img src={genre.poster} alt= {genre.title}/>
-                    <p> {genre.description} </p>
+                <div key={movie.id}>
+                    <h1> {movie.title} </h1>
+                    <img src={movie.poster} alt= {movie.title}/>
+                    <p> {movie.description} </p>
                     <h2> Genres </h2>
-                    <p> {genre.genres} </p>
+                    <p> {movie.genres} </p>
 
+                    <button onClick= {handleBack}> Return to List </button>
                 </div>
 
             )
