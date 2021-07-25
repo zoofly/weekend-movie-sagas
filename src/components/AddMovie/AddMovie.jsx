@@ -10,7 +10,11 @@ function AddMovie() {
         getMovies;
     }, []);
 
-    const [newMovie, setNewMovie]= useState('');
+    const [movieTitle, setMovietitle]= useState('');
+    const [movieDescription, setMovieDescription]= useState('');
+    const [moviePoster, setMoviePoster]= useState('');
+    // const [movieGenre, setMovieGenre]= useState('');
+
     const getMovies = () => {
         console.log('in get movies');
         dispatch ({ type: 'FETCH_MOVIES'});
@@ -19,14 +23,37 @@ function AddMovie() {
     return(
         <>
         <form>
-            <input>
-            
+            <input
+            name= 'addTitle'
+            type= 'text'
+            value= {movieTitle}
+            placeholder= 'Enter Movie Title'>
+                
             </input>
 
-            <input>
-            
-                </input>
+            <input
+            name= 'addPoster'
+            type= 'text'
+            value= {moviePoster}
+            placeholder= 'Enter Movie Poster URL'>
+                
+            </input>
 
+            <input
+            name= 'addDescription'
+            type= 'text'
+            value= {movieDescription}
+            placeholder= 'Enter Movie Title'>
+                
+            </input>
+
+            {/* <input
+            name= 'addTitle'
+            type= 'text'
+            value= {movieGenre}
+            placeholder= 'Enter Movie Title'>
+                
+            </input> */}
 
         </form>
 
