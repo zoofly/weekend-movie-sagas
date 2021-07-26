@@ -65,11 +65,12 @@ router.post("/", (req, res) => {
 router.get("/:id", (req, res) => {
   const detailsId = req.params.id;
   console.log("detailsId is:", detailsId);
-  const queryText = `SELECT title, description, poster, genres.name
+  const queryText = `SELECT title, description, poster, string_agg(DISTINCT genres.name, ',') as genres
   from movies
   JOIN movies_genres on movies_genres.movie_id = movies.id
   JOIN genres on genres.id= movies_genres.genre_id
-  WHERE movies.id=$1;`;
+  where movies.id= $1
+  group by movies.title, movies.description, movies.poster;`;
   pool
     .query(queryText, [detailsId])
     .then((result) => {

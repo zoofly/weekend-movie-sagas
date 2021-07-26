@@ -23,7 +23,7 @@ function Details() {
               <img src={movie.poster} alt={movie.title} />
               <p> {movie.description} </p>
               <h2> Genres </h2>
-              <p> {movie.name} </p>
+              <p> {movie.genres} </p>
             </div>
           );
         })}
